@@ -1,0 +1,71 @@
+{
+  "name": "homehandy-frontend",
+  "description": "Home Handy",
+  "version": "0.2.34",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-regular-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@giantmachines/redux-websocket": "^1.2.0",
+    "@material-ui/core": "^4.9.3",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.9.0",
+    "axios": "^0.19.2",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.9.0",
+    "eslint-plugin-flowtype": "^4.7.0",
+    "material-ui-dropzone": "^3.0.0",
+    "react": "^16.13.1",
+    "react-avatar-editor": "^11.0.9",
+    "react-dom": "^16.13.1",
+    "react-google-login": "^5.1.10",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
+    "react-select": "^3.1.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "serve": "^11.3.0",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "dev": "PORT=3033 react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "versionPatch": "npm version --no-git-tag-version patch",
+    "clearBuild": "babel-node ./scripts/clearBuildFolder.js",
+    "commitToRepo": "babel-node ./scripts/commitToRepo.js",
+    "sendToS3": "babel-node ./scripts/s3Deploy.js",
+    "cacheBuster": "babel-node ./scripts/cacheBuster.js",
+    "deploy": "npm run deploy:dev",
+    "deploy:dev": "npm run clearBuild && npm run versionPatch && env-cmd -f ./.env.dev npm run build && npm run commitToRepo && env-cmd -f ./.env.dev npm run sendToS3",
+    "deploy:prod": "npm run clearBuild && npm run build && env-cmd -f ./.env.prod npm run sendToS3 && env-cmd -f ./.env.prod npm run cacheBuster"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.650.0",
+    "babel-cli": "^6.26.0",
+    "env-cmd": "^10.1.0",
+    "rimraf": "^3.0.2",
+    "s3": "^4.4.0",
+    "simple-git": "^1.131.0"
+  }
+}

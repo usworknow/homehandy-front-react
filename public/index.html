@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- <link rel="shortcut icon" href="%PUBLIC_URL%/badge.png" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Home Handy" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Home Handy</title>
+    <script type="text/javascript">
+      let bversion = 0;
+      function GetIEVersion() {
+        var sAgent = window.navigator.userAgent;
+        var Idx = sAgent.indexOf("MSIE");
+
+        // If IE, return version number.
+        if (Idx > 0) 
+          return parseInt(sAgent.substring(Idx+ 5, sAgent.indexOf(".", Idx)));
+
+        // If IE 11 then look for Updated user agent string.
+        else if (!!navigator.userAgent.match(/Trident\/7\./)) 
+          return 11;
+
+        else
+          return 0; //It is not IE
+      }
+
+      if (GetIEVersion() > 0) {
+        alert("Browser is not supported");
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="app"></div>
+    <!--[if IE]>
+        <div>
+          <h1>Browser not supported.</h1>
+          <h3><a href="https://www.google.com/intl/en/chrome/">Click here to proceed</a></h3>
+        </div>
+    <![endif]-->
+  </body>
+</html>
